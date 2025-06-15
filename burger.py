@@ -6,19 +6,37 @@ class Burger:
         
     def setBuns(self, bunStyle):
         self.buns = bunStyle
-        return self
 
     def setPatty(self, pattyStyle):
         self.patty = pattyStyle
-        return self
         
     def setCheese(self, cheeseStyle):
         self.cheese = cheeseStyle
-        return self
     
     def print(self):
         print(self.patty, self.buns, self.cheese)
 
-b = Burger()
+class BurgerBuilder:
+    def __init__(self):
+        self.burger = Burger()
+    
+    def addBuns(self, bunStyle):
+        self.burger.setBuns(bunStyle)
+        return self
+    
+    def addPatty(self, pattyStyle):
+        self.burger.setPatty(pattyStyle)
+        return self
+    
+    def addCheese(self, cheeseStyle):
+        self.burger.setCheese(cheeseStyle)
+        return self
+    
+    def build(self):
+        return self.burger
+    
+    
 
-b.setBuns("sesame buns").setPatty("black angus patty").setCheese("american cheese").print()
+b = BurgerBuilder()
+
+b.addBuns("sesame buns").addPatty("black angus patty").addCheese("american cheese").build().print()
